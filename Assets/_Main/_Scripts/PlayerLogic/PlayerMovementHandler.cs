@@ -7,20 +7,24 @@ namespace _Main._Scripts.PlayerLogic
     public class PlayerMovementHandler : MonoBehaviour
     {
         [SerializeField] private Rigidbody rigidbody;
-        [SerializeField,Range(1,10)] private float speed;
-        
+
         private IKeyInput _keyInput;
         private Vector3 _moveDirection;
 
+        private float _speed;
+
         [Inject]
-        public void Construct(IKeyInput playerInput)
+        public void Construct(IKeyInput keyInput, PlayerConfig playerConfig)
         {
-            _keyInput = playerInput;
+            _speed = playerConfig.Speed;
+            _keyInput = keyInput;
             _keyInput.KeyDown += Move;
+            _keyInput.KeyUp += StopMove;
 
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
         }
+
 
         private void Move(KeyCode keyCode)
         {
@@ -41,7 +45,9 @@ namespace _Main._Scripts.PlayerLogic
             }
 
             _moveDirection.Normalize();
-            rigidbody.velocity = _moveDirection * speed;
+            rigidbody.velocity = _moveDirection * _speed;
         }
+
+        private void StopMove() => rigidbody.velocity = Vector3.zero;
     }
 }
