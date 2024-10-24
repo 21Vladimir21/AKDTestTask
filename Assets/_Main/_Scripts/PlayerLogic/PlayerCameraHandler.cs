@@ -1,7 +1,8 @@
+using _Main._Scripts.PlayerInputLogic;
 using UnityEngine;
 using Zenject;
 
-namespace _Main._Scripts.PlayerInputLogic
+namespace _Main._Scripts.PlayerLogic
 {
     public class PlayerCameraHandler : MonoBehaviour
     {

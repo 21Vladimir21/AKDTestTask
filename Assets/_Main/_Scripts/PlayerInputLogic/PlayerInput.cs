@@ -8,9 +8,7 @@ namespace _Main._Scripts.PlayerInputLogic
     {
         public event Action<KeyCode> KeyDown;
 
-        public event Action<Vector3> ClickDown;
-        public event Action<Vector3> ClickUp;
-        public event Action<Vector3> Drag;
+        public event Action ClickDown;
         public event Action<Vector3> MousePositionChanged;
 
 
@@ -34,10 +32,7 @@ namespace _Main._Scripts.PlayerInputLogic
         public void Tick()
         {
             MousePositionHandler();
-
             OnClickDown();
-            OnClickUp();
-            OnDrag();
         }
 
         private void MousePositionHandler()
@@ -54,31 +49,9 @@ namespace _Main._Scripts.PlayerInputLogic
 
         private void OnClickDown()
         {
-            if (Input.GetMouseButtonDown(LeftMouseButton))
-            {
-                _isSwiping = true;
-                _previousMousePosition = Input.mousePosition;
-                ClickDown?.Invoke(_previousMousePosition);
-            }
+            if (Input.GetMouseButtonDown(LeftMouseButton)) ClickDown?.Invoke();
         }
 
-        private void OnClickUp()
-        {
-            if (Input.GetMouseButtonUp(LeftMouseButton))
-            {
-                _isSwiping = false;
-                ClickUp?.Invoke(Input.mousePosition);
-            }
-        }
-
-        private void OnDrag()
-        {
-            if (_isSwiping == false)
-                return;
-            if (Input.mousePosition != _previousMousePosition)
-                Drag?.Invoke(Input.mousePosition);
-
-            _previousMousePosition = Input.mousePosition;
-        }
+     
     }
 }
