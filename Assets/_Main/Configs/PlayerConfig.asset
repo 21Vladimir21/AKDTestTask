@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: PlayerConfig
   m_EditorClassIdentifier: 
   <Speed>k__BackingField: 5
-  <CameraSensitivity>k__BackingField: 60
+  <CameraSensitivity>k__BackingField: 100
