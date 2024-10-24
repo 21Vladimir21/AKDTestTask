@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 539fa649868540ec93407da6f886ff41, type: 3}
   m_Name: PlayerConfig
   m_EditorClassIdentifier: 
-  <Speed>k__BackingField: 0
-  <CameraSensitivity>k__BackingField: 0
+  <Speed>k__BackingField: 5
+  <CameraSensitivity>k__BackingField: 60
